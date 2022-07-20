@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecipesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [RecipesController::class, 'index']);
+
+Route::get('/recipes/{id}', [RecipesController::class, 'show'])->where('id', '\d+');
+// Route::get('/ingredients', [IngredientsController::class, 'index']);
+// Route::get('/ingredients/{id}', [IngredientsController::class, 'show']);
+
