@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Recipe;
 use App\Models\Ingredient;
-use App\Models\RecipeIngredient;
 
-class RecipesController extends Controller
+class IngredientsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        return view('recipes.index', [
-            'recipes' => Recipe::all()
+        return view('ingredients.index', [
+            'ingredients' => Ingredient::all()
         ]);
     }
 
@@ -28,7 +26,7 @@ class RecipesController extends Controller
      */
     public function create()
     {
-        return view('recipes.create');
+        return view('ingredients.create');
     }
 
     /**
@@ -39,15 +37,11 @@ class RecipesController extends Controller
      */
     public function store(Request $request)
     {
-        $recipe = Recipe::create([
+        $ingredient = Ingredient::create([
             'name' => $request->input('name'),
-            'preptime' => $request->input('preptime'),
-            'cooktime' => $request->input('cooktime'),
-            'servings' => $request->input('servings'),
-            'directions' => $request->input('directions'),
         ]);
 
-        return redirect('/recipes');
+        return redirect('/ingredients');
     }
 
     /**
@@ -58,9 +52,8 @@ class RecipesController extends Controller
      */
     public function show($id)
     {
-        //dd(Recipe::find($id)->recipeIngredient);
-        return view('recipes.show', [
-            'recipe' => Recipe::find($id)
+        return view('ingredients.show', [
+            'ingredient' => Ingredient::find($id)
         ]);
     }
 
@@ -72,8 +65,8 @@ class RecipesController extends Controller
      */
     public function edit($id)
     {
-        return view('recipes.edit', [
-            'recipe' => Recipe::find($id)
+        return view('ingredients.edit', [
+            'ingredient' => Ingredient::find($id)
         ]);
     }
 
@@ -86,16 +79,12 @@ class RecipesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $recipe = Recipe::where('id', $id)
+        $recipe = Ingredient::where('id', $id)
             ->update([
             'name' => $request->input('name'),
-            'preptime' => $request->input('preptime'),
-            'cooktime' => $request->input('cooktime'),
-            'servings' => $request->input('servings'),
-            'directions' => $request->input('directions'),
         ]);
 
-        return redirect('/recipes');
+        return redirect('/ingredients');
     }
 
     /**
@@ -106,8 +95,8 @@ class RecipesController extends Controller
      */
     public function destroy($id)
     {
-        Recipe::find($id)->delete();
+        Ingredient::find($id)->delete();
 
-        return redirect('/recipes');
+        return redirect('/ingredients');
     }
 }

@@ -1,0 +1,9 @@
+:root {
+    --warning-color: rgb(187, 89, 71);
+    --warning-border: rgb(146, 79, 67);
+}
+
+.warning {
+    background-color: var(--warning-color);
+    border-color: var(--warning-border);
+}

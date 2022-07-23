@@ -4,4 +4,4 @@
     Vis fancy liste over oppskrifter
 @endsection
 
-/* {{ asset('storage/blahblah.png') }}
+<!-- {{ asset('storage/blahblah.png') }} -->

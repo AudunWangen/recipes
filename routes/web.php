@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipesController;
+use App\Http\Controllers\IngredientsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,13 @@ use App\Http\Controllers\RecipesController;
 |
 */
 
-Route::get('/', [RecipesController::class, 'index']);
+Route::resource('/recipes', RecipesController::class);
+Route::resource('/ingredients', IngredientsController::class);
 
-Route::get('/recipes/{id}', [RecipesController::class, 'show'])->where('id', '\d+');
+// Route::get('/', [RecipesController::class, 'index']);
+// Route::get('/recipes', [RecipesController::class, 'index']);
+// Route::get('/recipes/{id}', [RecipesController::class, 'show'])->where('id', '\d+');
+
 // Route::get('/ingredients', [IngredientsController::class, 'index']);
 // Route::get('/ingredients/{id}', [IngredientsController::class, 'show']);
 
